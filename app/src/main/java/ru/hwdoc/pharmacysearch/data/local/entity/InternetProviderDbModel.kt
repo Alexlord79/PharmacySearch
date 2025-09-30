@@ -5,7 +5,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "internet_provides",
+    tableName = "internet_providers",
     indices = [
         Index(value = ["nameProviders"], unique = true),  // Уникальный индекс на название провайдера
         Index(value = ["phoneNumber"]),                   // Индекс на номер телефона ТП
