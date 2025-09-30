@@ -13,8 +13,8 @@ import androidx.room.PrimaryKey
 data class PersonDbModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,            //id в локальной БД
-    val fullName: String?,      //полное ФИО
-    val position: String,       //должность
+    val fullName: String,      //полное ФИО
+    val position: String?,       //должность
     val mobilePhone: String?,   //мобильный телефон
     val email: String?          //почта Email
 )
