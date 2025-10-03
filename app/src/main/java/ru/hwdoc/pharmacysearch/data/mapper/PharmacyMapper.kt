@@ -37,7 +37,7 @@ fun PharmacyDbModel.toEntity(
         locality = locality,
         address = this.address,
         yandexMapsLink = this.yandexMapsLink,
-        mobileNumber = this.mobileNumber,
+        mobileNumber = this.phoneNumber,
         openingTime = this.openingTime,
         closingTime = this.closingTime,
         pharmacyManageress = mapPersonDbModelToEntity(pharmacyManageress),  // заведка
@@ -58,7 +58,7 @@ fun PharmacyDbModel.toEntity(
         floor = this.floor,                      // этаж расположения аптеки
         totalArea = this.totalArea,                  // Общая площадь аптеки
         areaOfTheTradingFloor = this.areaOfTheTradingFloor,      // площадь торгового зала
-        kW = this.kW,                         // расход киловатт (наверное)
+        kW = this.kw,                         // расход киловатт (наверное)
         numberOfSplits = this.numberOfSplits,                // колическтво сплитов в аптеке
         semiIndustrial = this.semiIndustrial,                // полупромышленные
         coolness = this.coolness,                      // прохлад (не знаю что такое)
@@ -73,7 +73,7 @@ private fun mapPersonDbModelToEntity(personDbModel: PersonDbModel): Person {
         id = personDbModel.id,
         fullName = personDbModel.fullName,
         position = personDbModel.position,
-        mobilePhone = personDbModel.mobilePhone,
+        mobilePhone = personDbModel.phoneNumber,
         email = personDbModel.email
     )
 }
@@ -85,7 +85,7 @@ private fun mapLegalEntityDbModelToEntity(legalEntityDbModel: LegalEntityDbModel
         legalAddress = legalEntityDbModel.legalAddress,
         inn = legalEntityDbModel.inn,
         ogrn = legalEntityDbModel.ogrn,
-        superintendentId = legalEntityDbModel.superintendentId,
+        superintendentId = legalEntityDbModel.superintendent,
         basisOfAuthority = legalEntityDbModel.basisOfAuthority
     )
 }
@@ -95,7 +95,7 @@ private fun mapVsaDbModelToEntity(vsaDbModel: VsaDbModel): Vsa {
         id = vsaDbModel.id,
         fullName = vsaDbModel.fullName,
         districtName = vsaDbModel.districtName,
-        mobilePhone = vsaDbModel.mobilePhone,
+        mobilePhone = vsaDbModel.phoneNumber,
         email = vsaDbModel.email
     )
 }
