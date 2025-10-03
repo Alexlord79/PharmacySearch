@@ -11,62 +11,63 @@ import androidx.room.PrimaryKey
     indices = [
         // Индексы для быстрого поиска по полям
         Index(value = ["number"], unique = true),
-        Index(value = ["pharmacy_manageress_id"]),        // Индекс на заведующую
-        Index(value = ["director_of_macroregion_id"]),     // Индекс на руководителя макрорегиона
-        Index(value = ["manager_id"]),                   // Индекс на управляющего
-        Index(value = ["legal_entity_id"]),               // Индекс на юридическое лицо
-        Index(value = ["vsa_id"]),                       // Индекс на ВСА
-        Index(value = ["internet_provider_id"]),          // Индекс на интернет-провайдера
-        Index(value = ["available_days_id"])
+        Index(value = ["pharmacy_manageress_id"]),          // Индекс на заведующую
+        Index(value = ["director_of_macroregion_id"]),      // Индекс на руководителя макрорегиона
+        Index(value = ["manager_id"]),                      // Индекс на управляющего
+        Index(value = ["legal_entity_id"]),                 // Индекс на юридическое лицо
+        Index(value = ["vsa_id"]),                          // Индекс на ВСА
+        Index(value = ["internet_provider_id"]),            // Индекс на интернет-провайдера
+        Index(value = ["available_days"])                   // Индекс на дни доставки
     ],
     foreignKeys = [
         // Связи с другими сущностями (внешние ключи)
+        // Внешний ключ к таблице persons для заведующих
         ForeignKey(
             entity = PersonDbModel::class,
             parentColumns = ["id"],
-            childColumns = ["pharmacyManageressId"],
+            childColumns = ["pharmacy_manageress_id"],
             onDelete = ForeignKey.SET_NULL
         ),
         // Внешний ключ к таблице persons для руководителя макрорегиона
         ForeignKey(
             entity = PersonDbModel::class,
             parentColumns = ["id"],
-            childColumns = ["directorOfMacroregionId"],
+            childColumns = ["director_of_macroregion_id"],
             onDelete = ForeignKey.SET_NULL
         ),
         // Внешний ключ к таблице persons для руководителя региона
         ForeignKey(
             entity = PersonDbModel::class,
             parentColumns = ["id"],
-            childColumns = ["headOfTheRegionalId"],
+            childColumns = ["head_of_the_regional_id"],
             onDelete = ForeignKey.SET_NULL
         ),
         // Внешний ключ к таблице persons для управляющего
         ForeignKey(
             entity = PersonDbModel::class,
             parentColumns = ["id"],
-            childColumns = ["managerId"],
+            childColumns = ["manager_id"],
             onDelete = ForeignKey.SET_NULL
         ),
         // Внешний ключ к таблице legal_entities для юридического лица
         ForeignKey(
             entity = LegalEntityDbModel::class,
             parentColumns = ["id"],
-            childColumns = ["legalEntityId"],
+            childColumns = ["legal_entity_id"],
             onDelete = ForeignKey.SET_NULL
         ),
         // Внешний ключ к таблице vsas для ВСА
         ForeignKey(
             entity = VsaDbModel::class,
             parentColumns = ["id"],
-            childColumns = ["vsaId"],
+            childColumns = ["vsa_id"],
             onDelete = ForeignKey.SET_NULL
         ),
         // Внешний ключ к таблице internet_providers для интернет-провайдера
         ForeignKey(
             entity = InternetProviderDbModel::class,
             parentColumns = ["id"],
-            childColumns = ["internetProviderId"],
+            childColumns = ["internet_provider_id"],
             onDelete = ForeignKey.SET_NULL
         )
     ]
@@ -80,7 +81,7 @@ data class PharmacyDbModel(
     val pharmacyBrand: String,              // бренд аптеки: Миницена или Здоровье
     // Географическая информация
     val region: String,                     // Регион страны
-    @ColumnInfo(name = "district_of_the_egion")
+    @ColumnInfo(name = "district_of_the_region")
     val districtOfTheRegion: String,        // Район региона
     @ColumnInfo(name = "locality_type")
     val localityType: String,               // Тип населенного пункта
@@ -95,7 +96,6 @@ data class PharmacyDbModel(
     val openingTime: String,                // Время открытия
     @ColumnInfo(name = "closing_time")
     val closingTime: String,                // Время закрытия
-
     // Ссылки на связанные сущности (внешние ключи)
     @ColumnInfo(name = "pharmacy_manageress_id")
     val pharmacyManageressId: Int?,          // ID заведующей аптекой
@@ -105,7 +105,6 @@ data class PharmacyDbModel(
     val headOfTheRegionalId: Int?,           // ID руководителя региона
     @ColumnInfo(name = "manager_id")
     val managerId: Int?,                     // ID управляющего
-
     // Юридическая информация
     @ColumnInfo(name = "opening_date")
     val openingDate: String,                // Дата открытия
@@ -116,13 +115,11 @@ data class PharmacyDbModel(
     @ColumnInfo(name = "ownership_status")
     val ownershipStatus: String,            // Статус собственности `
     val email: String,                      // Email аптеки
-
     // IT
     @ColumnInfo(name = "vsa_id")
     val vsaId: Int?,                         // ID ВСА
     @ColumnInfo(name = "internet_provider_id")
     val internetProviderId: Int?,            // ID интернет-провайдера
-
     // Дополнительная информация
     val k: String,                          // Дополнительный параметр
     @ColumnInfo(name = "opening_hours")
@@ -145,6 +142,6 @@ data class PharmacyDbModel(
     // Информация о доставке
     @ColumnInfo(name = "driving_route")
     val drivingRoute: String,               // Маршрут движения машины
-    @ColumnInfo(name = "available_days_id")
-    val availableDaysId: Int                // Дни доставки
+    @ColumnInfo(name = "available_days")
+    val availableDays: String               // Дни доставки
 )
