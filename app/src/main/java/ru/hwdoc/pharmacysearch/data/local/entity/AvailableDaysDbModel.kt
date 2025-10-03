@@ -1,5 +1,6 @@
 package ru.hwdoc.pharmacysearch.data.local.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
@@ -22,6 +23,8 @@ import androidx.room.PrimaryKey
 data class AvailableDaysDbModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
+    @ColumnInfo(name = "pharmacy_id")
     val pharmacyId: Int,    // ID аптеки (внешний ключ)
-    val dayOfWeek: String   // дни недели доставки (сериализованная строка)
+    @ColumnInfo(name = "day_of_week")
+    val dayOfWeek: String   // день недели доставки (сериализованная строка)
 )

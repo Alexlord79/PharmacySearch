@@ -18,7 +18,8 @@ interface PharmacyDao {
     fun getPharmacyByNumber(number: Int): Flow<PharmacyDbModel>
 
     @Transaction
-    @Query("""
+    @Query(
+        """
         SELECT DISTINCT * FROM (
             SELECT p.* FROM pharmacies p 
             WHERE (:searchNumber = 1 AND p.number LIKE '%' || :query || '%')            
@@ -30,7 +31,7 @@ interface PharmacyDao {
             WHERE (:searchAddress = 1 AND p.address LIKE '%' || :query || '%')            
             UNION            
             SELECT p.* FROM pharmacies p 
-            WHERE (:searchMobileNumber = 1 AND p.mobileNumber LIKE '%' || :query || '%')            
+            WHERE (:searchMobileNumber = 1 AND p.phoneNumber LIKE '%' || :query || '%')            
             UNION            
             SELECT p.* FROM pharmacies p
             JOIN vsa v ON p.vsaId = v.id
@@ -41,7 +42,8 @@ interface PharmacyDao {
             WHERE (:searchInternetProvider = 1 AND ip.nameProviders LIKE '%' || :query || '%')
         )
         ORDER BY number ASC
-    """)
+    """
+    )
     fun searchPharmacy(query: String,
                          searchNumber: Boolean,
                          searchLocality: Boolean,
