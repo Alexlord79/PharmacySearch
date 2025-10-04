@@ -10,7 +10,7 @@ import ru.hwdoc.pharmacysearch.data.local.entity.PharmacyWithAllDataDbModel
 interface PharmacyDao {
 
     @Transaction
-    @Query("SELECT * FROM pharmacies ORDER BY number DESC")
+    @Query("SELECT * FROM pharmacies ORDER BY number ASC")
     fun getAllPharmacy(): Flow<List<PharmacyWithAllDataDbModel>>
 
     @Transaction

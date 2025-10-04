@@ -13,7 +13,7 @@ data class Pharmacy(
     val address: String,                    // адрес (улица, дом, помещение)
     val yandexMapsLink: String,             // координаты расположения аптеки на Яндекс.Картах
     // контактная информация и время работы
-    val mobileNumber: String,               // основной контактный телефон аптеки
+    val phoneNumber: String,               // основной контактный телефон аптеки
     val openingTime: String,                // время открытия
     val closingTime: String,                // время закрытия
     // персонал
@@ -38,7 +38,7 @@ data class Pharmacy(
     val floor: String,                      // этаж расположения аптеки
     val totalArea: String,                  // Общая площадь аптеки
     val areaOfTheTradingFloor: String,      // площадь торгового зала
-    val kW: String,                         // расход киловатт (наверное)
+    val kw: String,                         // расход киловатт (наверное)
     val numberOfSplits: Int,                // колическтво сплитов в аптеке
     val semiIndustrial: Int,                // полупромышленные
     val coolness: Int,                      // прохлад (не знаю что такое)

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(
     tableName = "legal_entity",
     indices = [
-        Index(value = ["fullName"], unique = true), // Уникальный индекс на нименование организации
+        Index(value = ["full_name"], unique = true), // Уникальный индекс на нименование организации
         Index(value = ["inn"], unique = true)       // индекс на ИНН
     ]
 )

@@ -40,5 +40,5 @@ data class PharmacyWithAllDataDbModel(
         parentColumn = "internet_provider_id",
         entityColumn = "id"
     )
-    val internetProvider: InternetProviderDbModel         //интернет провайдер
+    val internetProvider: InternetProviderDbModel,        //интернет провайдер
 )
