@@ -6,6 +6,6 @@ data class LegalEntity(
     val legalAddress: String, // Юридический адрес регистрации
     val inn: String, // Идентификационный номер налогоплательщика (ИНН)
     val ogrn: String, // Основной государственный регистрационный номер (ОГРН)
-    val superintendentId: Int, // Ссылка на ID управляющего (может быть null)
+    val superintendent: String, // Ссылка на ID управляющего (может быть null)
     val basisOfAuthority: String // Документ, на основании которого действует юрлицо
 )
