@@ -11,6 +11,8 @@ import androidx.room.PrimaryKey
     indices = [
         // Индексы для быстрого поиска по полям
         Index(value = ["number"], unique = true),
+        Index(value = ["locality"]),
+        Index(value = ["address"]),
         Index(value = ["pharmacy_manageress_id"]),          // Индекс на заведующую
         Index(value = ["director_of_macroregion_id"]),      // Индекс на руководителя макрорегиона
         Index(value = ["head_of_the_regional_id"]),         // Индекс на руководителя региона
