@@ -12,13 +12,15 @@ import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
     primary = Black300 ,        //цвет карточек
-    primaryContainer = ,
+    primaryContainer = White300,//граница карточек
     onPrimary = White100,       //цвет текста на карточке
     background = Black200,      //основной цвет
     secondary = Black100,       //акцент, верх приложения
     surface = White300,         //цвет строки поиска
     onSurface = White100,       //цвет текста в строке поиска
     onSurfaceVariant = White200,//цвет рамки строки поиска
+    outlineVariant = White300,  //цвет кнопок
+
 
 
 )
@@ -31,7 +33,8 @@ private val LightColorScheme = lightColorScheme(
     secondary = Black100,       //акцент, верх приложения
     surface = White300,         //цвет строки поиска
     onSurface = White100,       //цвет текста в строке поиска
-    onSurfaceVariant = White200 //цвет рамки строки поиска
+    onSurfaceVariant = White200,//цвет рамки строки поиска
+    outlineVariant = Green100,  //цвет кнопок
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
