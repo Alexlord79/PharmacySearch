@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">PharmacySearch</string>
+    <string name="placeholderSearch">What are we looking for?)</string>
+    <string name="clearSearch">Clear the input field</string>
+    <string name="searchBy">Search Filters…</string>
+    <string name="filterAll">All</string>
+    <string name="filterNumber">Number</string>
+    <string name="filterLocality">Locality</string>
+    <string name="filterAddress">Address</string>
+    <string name="filterPhone">Phone</string>
+    <string name="filterVsa">VSA</string>
+    <string name="filterInternetProvider">Internet prov.</string>
 </resources>

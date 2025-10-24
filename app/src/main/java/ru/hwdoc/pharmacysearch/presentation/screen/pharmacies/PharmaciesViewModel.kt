@@ -64,7 +64,7 @@ class PharmaciesViewModel @Inject constructor(
             when(command) {
                 is PharmaciesCommand.InputSearchQuery -> {
                     filters.update {
-                        it.copy(query = command.filters.query.trim())
+                        it.copy(query = command.filters.query)
                     }
                 }
                 is PharmaciesCommand.ToggleFilter -> filters.update {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Поиск аптеки</string>
+    <string name="placeholderSearch">Что ищем?)</string>
+    <string name="clearSearch">Очистить поле ввода</string>
+    <string name="searchBy">Фильтр поиска по…</string>
+    <string name="filterAll">Всему</string>
+    <string name="filterNumber">Номеру</string>
+    <string name="filterLocality">Городу</string>
+    <string name="filterAddress">Адресу</string>
+    <string name="filterPhone">Телефону</string>
+    <string name="filterVsa">ВСА</string>
+    <string name="filterInternetProvider">Провайдеру</string>
+</resources>
