@@ -5,8 +5,8 @@ data class PharmacyFilters(
     val isAll: Boolean = true,              // Поиск по всем параметрам
     val isNumber: Boolean = false,          // По номеру аптеки
     val isLocality: Boolean = false,        // По населенному пункту расположения аптеки
-    val isAddress: Boolean = false, // По адресу -  улица, дом
-    val isPhoneNumber: Boolean = false,    // По номеру телефона аптеки
+    val isAddress: Boolean = false,         // По адресу -  улица, дом
+    val isPhoneNumber: Boolean = false,     // По номеру телефона аптеки
     val isVsa: Boolean = false,             // По ВСА
     val isInternetProvider: Boolean = false // По интернет-провайдеру
 ) {

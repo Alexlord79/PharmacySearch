@@ -1,5 +1,6 @@
 package ru.hwdoc.pharmacysearch.presentation.ui.theme
 
+import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -8,7 +9,10 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
     primary = Black300 ,        //цвет карточек
@@ -19,7 +23,8 @@ private val DarkColorScheme = darkColorScheme(
     surface = White300,         //цвет строки поиска
     onSurface = White100,       //цвет текста в строке поиска
     onSurfaceVariant = White200,//цвет рамки строки поиска
-    outlineVariant = White300,  //цвет кнопок
+    outlineVariant = White300,  //цвет кнопок на карточке
+    outline = Green100,         //цвет кнопки чипсов выбранной
 
 
 
@@ -34,7 +39,8 @@ private val LightColorScheme = lightColorScheme(
     surface = White300,         //цвет строки поиска
     onSurface = White100,       //цвет текста в строке поиска
     onSurfaceVariant = White200,//цвет рамки строки поиска
-    outlineVariant = Green100,  //цвет кнопок
+    outlineVariant = White300,  //цвет кнопок на карточке
+    outline = Green100,         //цвет кнопки чипсов выбранной
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -61,6 +67,15 @@ fun PharmacySearchTheme(
       }
       darkTheme -> DarkColorScheme
       else -> LightColorScheme
+    }
+
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            val insetsController = WindowCompat.getInsetsController(window, view)
+            insetsController.isAppearanceLightStatusBars = false
+        }
     }
 
     MaterialTheme(
