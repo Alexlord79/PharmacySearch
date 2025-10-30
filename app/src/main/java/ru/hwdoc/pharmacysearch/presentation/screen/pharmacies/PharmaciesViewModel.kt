@@ -83,23 +83,32 @@ class PharmaciesViewModel @Inject constructor(
 }
 
 private fun PharmacyFilters.toggleFilter(filterType: FilterType): PharmacyFilters {
-    return when (filterType) {
-        FilterType.ALL -> copy(
-            isAll = !isAll,
-            isNumber = false,
-            isLocality = false,
-            isAddress = false,
-            isPhoneNumber = false,
-            isVsa = false,
-            isInternetProvider = false,
-        )
-        FilterType.NUMBER -> copy(isNumber = !isNumber, isAll = false)
-        FilterType.LOCALITY -> copy(isLocality = !isLocality, isAll = false)
-        FilterType.ADDRESS -> copy(isAddress = !isAddress, isAll = false)
-        FilterType.PHONE -> copy(isPhoneNumber = !isPhoneNumber, isAll = false)
-        FilterType.VSA -> copy(isVsa = !isVsa, isAll = false)
-        FilterType.INTERNET -> copy(isInternetProvider = !isInternetProvider, isAll = false)
-    }
+//    return when (filterType) {
+//        FilterType.ALL -> copy(
+//            isAll = !isAll,
+//            isNumber = false,
+//            isLocality = false,
+//            isAddress = false,
+//            isPhoneNumber = false,
+//            isVsa = false,
+//            isInternetProvider = false,
+//        )
+//        FilterType.NUMBER -> copy(isNumber = !isNumber, isAll = false)
+//        FilterType.LOCALITY -> copy(isLocality = !isLocality, isAll = false)
+//        FilterType.ADDRESS -> copy(isAddress = !isAddress, isAll = false)
+//        FilterType.PHONE -> copy(isPhoneNumber = !isPhoneNumber, isAll = false)
+//        FilterType.VSA -> copy(isVsa = !isVsa, isAll = false)
+//        FilterType.INTERNET -> copy(isInternetProvider = !isInternetProvider, isAll = false)
+//    }
+    return copy(
+        isAll = filterType == FilterType.ALL && !isAll,
+        isNumber = filterType == FilterType.NUMBER && !isNumber,
+        isLocality = filterType == FilterType.LOCALITY && !isLocality,
+        isAddress = filterType == FilterType.ADDRESS && !isAddress,
+        isPhoneNumber = filterType == FilterType.PHONE && !isPhoneNumber,
+        isVsa = filterType == FilterType.VSA && !isVsa,
+        isInternetProvider = filterType == FilterType.INTERNET && !isInternetProvider
+    )
 }
 
 enum class FilterType {
