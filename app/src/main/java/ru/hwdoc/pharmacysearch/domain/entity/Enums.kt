@@ -26,7 +26,7 @@ enum class DayOfWeek(val nameOfDayOfWeek: String) {
 //Сегменты сети аптек
 enum class PharmacyBrand(val nameOfBrand: String) {
     ZDOROVIE("Здоровье"),
-    MINITSENA("Миницена");
+    MINIPRICE("Миницена");
 }
 
 //Тип: аптека или аптечный пункт
