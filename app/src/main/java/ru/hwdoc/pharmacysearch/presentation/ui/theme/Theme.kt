@@ -31,7 +31,7 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = White100,         //цвет карточек
+    primary = White400,         //цвет карточек
     primaryContainer = Gray100, //граница карточек
     onPrimary = Black400,       //цвет текста на карточке
     background = White100,      //основной цвет

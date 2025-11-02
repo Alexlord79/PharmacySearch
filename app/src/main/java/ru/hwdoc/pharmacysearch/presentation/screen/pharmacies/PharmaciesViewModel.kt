@@ -101,13 +101,13 @@ private fun PharmacyFilters.toggleFilter(filterType: FilterType): PharmacyFilter
 //        FilterType.INTERNET -> copy(isInternetProvider = !isInternetProvider, isAll = false)
 //    }
     return copy(
-        isAll = filterType == FilterType.ALL && !isAll,
-        isNumber = filterType == FilterType.NUMBER && !isNumber,
-        isLocality = filterType == FilterType.LOCALITY && !isLocality,
-        isAddress = filterType == FilterType.ADDRESS && !isAddress,
-        isPhoneNumber = filterType == FilterType.PHONE && !isPhoneNumber,
-        isVsa = filterType == FilterType.VSA && !isVsa,
-        isInternetProvider = filterType == FilterType.INTERNET && !isInternetProvider
+        isAll = filterType == FilterType.ALL,
+        isNumber = filterType == FilterType.NUMBER,
+        isLocality = filterType == FilterType.LOCALITY,
+        isAddress = filterType == FilterType.ADDRESS,
+        isPhoneNumber = filterType == FilterType.PHONE,
+        isVsa = filterType == FilterType.VSA,
+        isInternetProvider = filterType == FilterType.INTERNET
     )
 }
 

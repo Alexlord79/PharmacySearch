@@ -2,6 +2,7 @@ package ru.hwdoc.pharmacysearch.presentation.screen.pharmacies
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,6 +31,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -39,7 +41,10 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import ru.hwdoc.pharmacysearch.R
 import ru.hwdoc.pharmacysearch.domain.entity.Pharmacy
+import ru.hwdoc.pharmacysearch.domain.entity.PharmacyBrand
 import ru.hwdoc.pharmacysearch.domain.entity.PharmacyFilters
+import ru.hwdoc.pharmacysearch.presentation.ui.theme.Health
+import ru.hwdoc.pharmacysearch.presentation.ui.theme.MiniPrice
 
 @Composable
 fun PharmaciesScreen(
@@ -103,11 +108,49 @@ fun PharmaciesScreen(
                 .fillMaxSize(),
             contentPadding = innerPadding
         ) {
-            item {
-                Text(
-                    text = "ghbghjzdfdszjsdj"
-                )
+            state.pharmacies.forEach{pharmacy ->
+                item {
+                    PharmacyCard(
+                        modifier = Modifier,
+                        pharmacy = pharmacy,
+                        onPharmacyClick = onPharmacyClick
+                    )
+                }
             }
+        }
+    }
+}
+
+@Composable
+private fun PharmacyCard(
+    modifier: Modifier = Modifier,
+    pharmacy: Pharmacy,
+    onPharmacyClick: (Pharmacy) -> Unit
+    ) {
+    Column(
+        modifier = modifier
+            .clip(RoundedCornerShape(24.dp))
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.primaryContainer,
+                shape = RoundedCornerShape(24.dp)
+            )
+            .background(MaterialTheme.colorScheme.primary)
+            .combinedClickable(
+                onClick = { onPharmacyClick(pharmacy) }
+            )
+            .padding(16.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(11.dp))
+                .background(
+                    when(pharmacy.pharmacyBrand) {
+                        PharmacyBrand.ZDOROVIE -> Health
+                        PharmacyBrand.MINIPRICE -> MiniPrice
+                    }
+                )
+        ) {
 
         }
     }
