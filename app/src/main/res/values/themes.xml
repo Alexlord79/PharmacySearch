@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.PharmacySearch" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.PharmacySearch" parent="android:Theme.Material.Light.NoActionBar"/>
+    <style name="Theme.PharmacySearch.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/green</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_screen_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.PharmacySearch</item>
+    </style>
 </resources>
