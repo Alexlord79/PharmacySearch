@@ -22,40 +22,40 @@ fun PharmacyWithAllDataDbModel.toEntity(): Pharmacy {
         Pharmacy(
             id = id,
             number = number,
-            pharmacyBrand = PharmacyBrand.valueOf(pharmacyBrand),
-            region = region,
-            districtOfTheRegion = districtOfTheRegion,
-            localityType = LocalityType.valueOf(localityType),
-            locality = locality,
-            address = address,
-            yandexMapsLink = yandexMapsLink,
-            phoneNumber = phoneNumber,
-            openingTime = openingTime,
-            closingTime = closingTime,
+            pharmacyBrand = PharmacyBrand.valueOf(pharmacyBrand ?: "Нет данных"),
+            region = region ?: "",
+            districtOfTheRegion = districtOfTheRegion ?: "",
+            localityType = LocalityType.valueOf(localityType ?: "Нет данных"),
+            locality = locality ?: "",
+            address = address ?: "",
+            yandexMapsLink = yandexMapsLink ?: "",
+            phoneNumber = phoneNumber ?: "",
+            openingTime = openingTime ?: "",
+            closingTime = closingTime ?: "",
             pharmacyManageress = pharmacyManageress.toEntity(),
             directorOfMacroregion = directorOfMacroregion.toEntity(),
             headOfTheRegional = headOfTheRegional.toEntity(),
             manager = manager.toEntity(),
-            openingDate = openingDate,
+            openingDate = openingDate ?: "",
             legalEntity = legalEntity.toEntity(),
-            pharmacyType = PharmacyType.valueOf(pharmacyType),
-            ownershipStatus = OwnershipStatus.valueOf(ownershipStatus),
-            email = email,
+            pharmacyType = PharmacyType.valueOf(pharmacyType ?: "Нет данных"),
+            ownershipStatus = OwnershipStatus.valueOf(ownershipStatus ?: "Нет данных"),
+            email = email ?: "",
             vsa = vsa.toEntity(),
             internetProvider = internetProvider.toEntity(),
-            k = k,
-            openingHours = openingHours,
-            workingCashRegisters = workingCashRegisters,
-            modulesCashRegister = modulesCashRegister,
-            floor = floor,
-            totalArea = totalArea,
-            areaOfTheTradingFloor = areaOfTheTradingFloor,
-            kw = kw,
-            numberOfSplits = numberOfSplits,
-            semiIndustrial = semiIndustrial,
-            coolness = coolness,
-            drivingRoute = drivingRoute,
-            availableDays = availableDays.toDayOfWeekSet()
+            k = k ?: "",
+            openingHours = openingHours ?: "",
+            workingCashRegisters = workingCashRegisters ?: "",
+            modulesCashRegister = modulesCashRegister ?: "",
+            floor = floor ?: "",
+            totalArea = totalArea ?: "",
+            areaOfTheTradingFloor = areaOfTheTradingFloor ?: "",
+            kw = kw ?: "",
+            numberOfSplits = numberOfSplits ?: "",
+            semiIndustrial = semiIndustrial ?: "",
+            coolness = coolness ?: "",
+            drivingRoute = drivingRoute ?: "",
+            availableDays = availableDays?.toDayOfWeekSet() ?: emptySet()
         )
     }
 }
@@ -66,23 +66,26 @@ fun List<PharmacyWithAllDataDbModel>.toEntity(): List<Pharmacy> {
     }
 }
 
-private fun String.toDayOfWeekSet(): Set<DayOfWeek> {
-    return if (this.isBlank()) {
-        emptySet()
-    } else {
-        this.trim().split(",")
-            .map { DayOfWeek.valueOf(it.uppercase()) }
-            .toSet()
-    }
+fun String.toDayOfWeekSet(): Set<DayOfWeek> {
+    return this.split(",")
+        .map { it.trim() }
+        .mapNotNull { dayString ->
+            try {
+                DayOfWeek.valueOf(dayString)
+            } catch (e: IllegalArgumentException) {
+                null //некорректные значения
+            }
+        }
+        .toSet()
 }
 
 private fun PersonDbModel.toEntity(): Person {
     return Person(
         id = this.id,
         fullName = this.fullName,
-        position = this.position,
-        mobilePhone = this.phoneNumber,
-        email = this.email
+        position = this.position ?: "",
+        mobilePhone = this.phoneNumber ?: "",
+        email = this.email ?: ""
     )
 }
 
@@ -90,11 +93,11 @@ private fun LegalEntityDbModel.toEntity(): LegalEntity {
     return LegalEntity(
         id = this.id,
         fullName = this.fullName,
-        legalAddress = this.legalAddress,
-        inn = this.inn,
-        ogrn = this.ogrn,
-        superintendent = this.superintendent,
-        basisOfAuthority = this.basisOfAuthority
+        legalAddress = this.legalAddress ?: "",
+        inn = this.inn ?: "",
+        ogrn = this.ogrn ?: "",
+        superintendent = this.superintendent ?: "",
+        basisOfAuthority = this.basisOfAuthority ?: ""
     )
 }
 
@@ -102,9 +105,9 @@ private fun VsaDbModel.toEntity(): Vsa {
     return Vsa(
         id = this.id,
         fullName = this.fullName,
-        districtName = this.districtName,
-        phoneNumber = this.phoneNumber,
-        email = this.email
+        districtName = this.districtName ?: "",
+        phoneNumber = this.phoneNumber ?: "",
+        email = this.email ?: ""
     )
 }
 
@@ -112,7 +115,7 @@ private fun InternetProviderDbModel.toEntity(): InternetProvider {
     return InternetProvider(
         id = this.id,
         fullName = this.fullName,
-        phoneNumber = this.phoneNumber,
-        email = this.email
+        phoneNumber = this.phoneNumber ?: "",
+        email = this.email ?: ""
     )
 }

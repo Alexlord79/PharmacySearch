@@ -17,10 +17,9 @@ data class VsaDbModel(
     val id: Int = 0,
     @ColumnInfo(name = "full_name")
     val fullName: String,               // ФИО ВСА
-    @ColumnInfo(name = "phone_number", defaultValue = "нет_данных")
-    val phoneNumber: String,            // Мобильный телефон
-    @ColumnInfo(name = "district_name", defaultValue = "нет_данных")
-    val districtName: String,           // Зона ответственности
-    @ColumnInfo(defaultValue = "нет_данных")
-    val email: String                   // E-mail
+    @ColumnInfo(name = "phone_number")
+    val phoneNumber: String? = null,            // Мобильный телефон
+    @ColumnInfo(name = "district_name")
+    val districtName: String? = null,           // Зона ответственности
+    val email: String? = null                   // E-mail
 )

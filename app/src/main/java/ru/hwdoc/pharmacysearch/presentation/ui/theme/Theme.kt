@@ -25,6 +25,8 @@ private val DarkColorScheme = darkColorScheme(
     onSurfaceVariant = White200,//цвет рамки строки поиска
     outlineVariant = White300,  //цвет кнопок на карточке
     outline = Green100,         //цвет кнопки чипсов выбранной
+    onTertiary = White100,       //цвет текста на карточке
+
 
 
 
@@ -41,6 +43,7 @@ private val LightColorScheme = lightColorScheme(
     onSurfaceVariant = White200,//цвет рамки строки поиска
     outlineVariant = White300,  //цвет кнопок на карточке
     outline = Green100,         //цвет кнопки чипсов выбранной
+    onTertiary = Black400,       //цвет текста на карточке
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
