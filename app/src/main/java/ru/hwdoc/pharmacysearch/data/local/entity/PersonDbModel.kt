@@ -14,12 +14,12 @@ import androidx.room.PrimaryKey
 data class PersonDbModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,                //id в локальной БД
-    @ColumnInfo(name = "full_name", defaultValue = "нет_данных")
+    @ColumnInfo(name = "full_name", defaultValue = "Нет данных")
     val fullName: String,           //полное ФИО
-    @ColumnInfo(name = "phone_number", defaultValue = "нет_данных")
-    val phoneNumber: String,        //мобильный телефон
-    @ColumnInfo(defaultValue = "нет_данных")
-    val position: String,           //должность
-    @ColumnInfo(defaultValue = "нет_данных")
-    val email: String               //почта Email
+    @ColumnInfo(name = "phone_number", defaultValue = "Нет данных")
+    val phoneNumber: String? = null,        //мобильный телефон
+    @ColumnInfo(defaultValue = "Нет данных")
+    val position: String? = null,           //должность
+    @ColumnInfo(defaultValue = "Нет данных")
+    val email: String? = null               //почта Email
 )

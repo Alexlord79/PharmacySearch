@@ -21,32 +21,30 @@ interface PharmacyDao {
     @Transaction
     @Query(
         """
-        SELECT DISTINCT * FROM (
-            SELECT p.* FROM pharmacies p
-            WHERE (:searchNumber = 1 AND p.number LIKE '%' || :query || '%')
-            UNION
-            SELECT p.* FROM pharmacies p
-            WHERE (:searchLocality = 1 AND p.locality LIKE '%' || :query || '%')
-            UNION
-            SELECT p.* FROM pharmacies p
-            WHERE (:searchAddress = 1 AND p.address LIKE '%' || :query || '%')
-            UNION
-            SELECT p.* FROM pharmacies p
-            WHERE (:searchPhoneNumber = 1 AND p.phone_number LIKE '%' || :query || '%')
-            UNION
-            SELECT p.* FROM pharmacies p
-            JOIN vsa v ON p.vsa_id = v.id
-            WHERE (:searchVsa = 1 AND v.full_name LIKE '%' || :query || '%')
-            UNION
-            SELECT p.* FROM pharmacies p
-            JOIN internet_providers ip ON p.internet_provider_id = ip.id
-            WHERE (:searchInternetProvider = 1 AND ip.full_name LIKE '%' || :query || '%')
-        )
-        ORDER BY number ASC
+        SELECT DISTINCT p.* FROM pharmacies p
+        LEFT JOIN vsa v ON p.vsa_id = v.id
+        LEFT JOIN internet_providers ip ON p.internet_provider_id = ip.id
+        WHERE 
+            (:searchAll = 1 AND (
+                p.number LIKE '%' || :query || '%' OR
+                p.locality LIKE '%' || :query || '%' OR
+                p.address LIKE '%' || :query || '%' /*OR
+                p.phone_number LIKE '%' || :query || '%' OR
+                v.full_name LIKE '%' || :query || '%' OR
+                ip.full_name LIKE '%' || :query || '%'*/
+            ))
+            OR (:searchNumber = 1 AND p.number = CAST(:query AS INTEGER))
+            OR (:searchLocality = 1 AND p.locality LIKE '%' || :query || '%')
+            OR (:searchAddress = 1 AND p.address LIKE '%' || :query || '%')
+            OR (:searchPhoneNumber = 1 AND p.phone_number LIKE '%' || :query || '%')
+            OR (:searchVsa = 1 AND v.full_name LIKE '%' || :query || '%')
+            OR (:searchInternetProvider = 1 AND ip.full_name LIKE '%' || :query || '%')
+        ORDER BY p.number ASC
     """
     )
     fun searchPharmacy(
         query: String,
+        searchAll: Boolean,
         searchNumber: Boolean,
         searchLocality: Boolean,
         searchAddress: Boolean,
@@ -58,12 +56,13 @@ interface PharmacyDao {
     fun searchPharmacy(filters: PharmacyFilters): Flow<List<PharmacyWithAllDataDbModel>> {
         return searchPharmacy(
             query = filters.query,
+            searchAll = filters.isAll,
             searchNumber = filters.isNumber,
             searchLocality = filters.isLocality,
             searchAddress = filters.isAddress,
-            searchPhoneNumber = filters.isPhoneNumber,
-            searchVsa = filters.isVsa,
-            searchInternetProvider = filters.isInternetProvider
+            searchPhoneNumber = false,//filters.isPhoneNumber,
+            searchVsa = false,//filters.isVsa,
+            searchInternetProvider = false,//filters.isInternetProvider
         )
     }
 

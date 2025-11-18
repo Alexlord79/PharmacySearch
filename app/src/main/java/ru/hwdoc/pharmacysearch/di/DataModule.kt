@@ -36,7 +36,10 @@ interface DataModule {
                 context = context,
                 klass = PharmacyDatabase::class.java,
                 name = "pharmacy.db"
-            ).fallbackToDestructiveMigration(true).build()
+            )
+                .fallbackToDestructiveMigration(true)
+                .createFromAsset("bd_to_upload_to_room.db")
+                .build()
         }
 
         @Provides

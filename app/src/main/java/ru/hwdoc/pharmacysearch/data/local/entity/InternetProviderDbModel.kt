@@ -17,7 +17,7 @@ data class InternetProviderDbModel(
     @ColumnInfo(name = "full_name")
     val fullName: String,                   //Название провайдера
     @ColumnInfo(name = "phone_number", defaultValue = "нет_данных")
-    val phoneNumber: String,                //Номер телефона ТП
+    val phoneNumber: String? = null,                //Номер телефона ТП
     @ColumnInfo(defaultValue = "нет_данных")
-    val email: String                       //Email ТП
+    val email: String? = null                       //Email ТП
 )

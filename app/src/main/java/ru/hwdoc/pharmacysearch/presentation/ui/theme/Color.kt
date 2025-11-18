@@ -18,4 +18,4 @@ val Black400 = Color(0xFF151921)        //Св. т. цвет текста на �
 val Green100 = Color(0xFF0BAB7C)        //Св. т. цвет кнопок
 
 val MiniPrice = Color(0xFFe8474c)       //миницена
-val Health = Color(0xFF12b993)          //здоровье
+val Health = Color(0xFF4CAF50)          //здоровье

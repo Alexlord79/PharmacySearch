@@ -17,11 +17,14 @@ data class LegalEntityDbModel(
     val id: Int,
     @ColumnInfo(name = "full_name")
     val fullName: String,               // Полное наименование юридического лица
-    @ColumnInfo(name = "legal_address")
-    val legalAddress: String,           // Юридический адрес регистрации
-    val inn: String,                    // ИНН (Идентификационный номер налогоплательщика)
-    val ogrn: String,                   // ОГРН (Основной государственный регистрационный номер)
-    val superintendent: String,         // ID управляющего лица
-    @ColumnInfo(name = "basis_of_authority")
-    val basisOfAuthority: String        // Документ-основание полномочий
+    @ColumnInfo(name = "legal_address", defaultValue = "Нет данных")
+    val legalAddress: String? = null,           // Юридический адрес регистрации
+    @ColumnInfo(defaultValue = "Нет данных")
+    val inn: String? = null,                    // ИНН (Идентификационный номер налогоплательщика)
+    @ColumnInfo(defaultValue = "Нет данных")
+    val ogrn: String? = null,                   // ОГРН (Основной государственный регистрационный номер)
+    @ColumnInfo(defaultValue = "Нет данных")
+    val superintendent: String? = null,         // ID управляющего лица
+    @ColumnInfo(name = "basis_of_authority", defaultValue = "Нет данных")
+    val basisOfAuthority: String? = null        // Документ-основание полномочий
 )

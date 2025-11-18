@@ -81,70 +81,70 @@ data class PharmacyDbModel(
     val id: Int = 0,                        // id аптеки в локальной БД
     val number: Int,                        // номер аптеки (видимый пользователю)
     @ColumnInfo(name = "pharmacy_brand")
-    val pharmacyBrand: String = "",              // бренд аптеки: Миницена или Здоровье
+    val pharmacyBrand: String? = null,              // бренд аптеки: Миницена или Здоровье
     // Географическая информация
-    val region: String = "",                     // Регион страны
+    val region: String? = null,                     // Регион страны
     @ColumnInfo(name = "district_of_the_region")
-    val districtOfTheRegion: String = "",        // Район региона
+    val districtOfTheRegion: String? = null,        // Район региона
     @ColumnInfo(name = "locality_type")
-    val localityType: String = "",               // Тип населенного пункта
-    val locality: String = "",                   // Населенный пункт
-    val address: String = "",                    // Адрес
+    val localityType: String? = null,               // Тип населенного пункта
+    val locality: String? = null,                   // Населенный пункт
+    val address: String? = null,                    // Адрес
     @ColumnInfo(name = "yandex_maps_link")
-    val yandexMapsLink: String = "",             // Ссылка на Яндекс.Карты
+    val yandexMapsLink: String? = null,             // Ссылка на Яндекс.Карты
     // Контактная информация
     @ColumnInfo(name = "phone_number")
-    val phoneNumber: String = "",               // Основной телефон
+    val phoneNumber: String? = null,               // Основной телефон
     @ColumnInfo(name = "opening_time")
-    val openingTime: String = "",                // Время открытия
+    val openingTime: String? = null,                // Время открытия
     @ColumnInfo(name = "closing_time")
-    val closingTime: String = "",                // Время закрытия
+    val closingTime: String? = null,                // Время закрытия
     // Ссылки на связанные сущности (внешние ключи)
     @ColumnInfo(name = "pharmacy_manageress_id")
-    val pharmacyManageressId: Int = 0,          // ID заведующей аптекой
+    val pharmacyManageressId: Int = 1,          // ID заведующей аптекой
     @ColumnInfo(name = "director_of_macroregion_id")
-    val directorOfMacroregionId: Int = 0,       // ID руководителя макрорегиона
+    val directorOfMacroregionId: Int = 1,       // ID руководителя макрорегиона
     @ColumnInfo(name = "head_of_the_regional_id")
-    val headOfTheRegionalId: Int = 0,           // ID руководителя региона
+    val headOfTheRegionalId: Int = 1,           // ID руководителя региона
     @ColumnInfo(name = "manager_id")
-    val managerId: Int = 0,                     // ID управляющего
+    val managerId: Int = 1,                     // ID управляющего
     // Юридическая информация
     @ColumnInfo(name = "opening_date")
-    val openingDate: String = "",                // Дата открытия
+    val openingDate: String? = null,                // Дата открытия
     @ColumnInfo(name = "legal_entity_id")
-    val legalEntityId: Int = 0,                // ID юридического лица
+    val legalEntityId: Int = 1,                // ID юридического лица
     @ColumnInfo(name = "pharmacy_type")
-    val pharmacyType: String = "",               // Тип аптеки `
+    val pharmacyType: String? = null,               // Тип аптеки `
     @ColumnInfo(name = "ownership_status")
-    val ownershipStatus: String = "",            // Статус собственности `
-    val email: String = "",                      // Email аптеки
+    val ownershipStatus: String? = null,            // Статус собственности `
+    val email: String? = null,                      // Email аптеки
     // IT
     @ColumnInfo(name = "vsa_id")
-    val vsaId: Int = 0,                         // ID ВСА
+    val vsaId: Int = 7,                         // ID ВСА
     @ColumnInfo(name = "internet_provider_id")
-    val internetProviderId: Int = 0,            // ID интернет-провайдера
+    val internetProviderId: Int = 11,            // ID интернет-провайдера
     // Дополнительная информация
-    val k: String = "",                          // Дополнительный параметр
+    val k: String? = null,                          // Дополнительный параметр
     @ColumnInfo(name = "opening_hours")
-    val openingHours: String = "",               // Количество рабочих часов
+    val openingHours: String? = null,               // Количество рабочих часов
     @ColumnInfo(name = "working_cash_registers")
-    val workingCashRegisters: Int = 0,          // Рабочие кассы
+    val workingCashRegisters: String? = null,          // Рабочие кассы
     @ColumnInfo(name = "modules_cash_register")
-    val modulesCashRegister: Int = 0,           // Кассовые модули
-    val floor: String = "",                      // Этаж
+    val modulesCashRegister: String? = null,           // Кассовые модули
+    val floor: String? = null,                      // Этаж
     @ColumnInfo(name = "total_area")
-    val totalArea: String = "",                  // Общая площадь
+    val totalArea: String? = null,                  // Общая площадь
     @ColumnInfo(name = "area_of_the_trading_floor")
-    val areaOfTheTradingFloor: String = "",      // Площадь торгового зала
-    val kw: String = "",                         // Расход электроэнергии
+    val areaOfTheTradingFloor: String? = null,      // Площадь торгового зала
+    val kw: String? = null,                         // Расход электроэнергии
     @ColumnInfo(name = "number_of_splits")
-    val numberOfSplits: Int = 0,                // Количество сплитов
+    val numberOfSplits: String? = null,                // Количество сплитов
     @ColumnInfo(name = "semi_industrial")
-    val semiIndustrial: Int = 0,                // Полупромышленные кондиционеры
-    val coolness: Int = 0,                      // Параметр "прохлад"
+    val semiIndustrial: String? = null,                // Полупромышленные кондиционеры
+    val coolness: String? = null,                      // Параметр "прохлад"
     // Информация о доставке
     @ColumnInfo(name = "driving_route")
-    val drivingRoute: String = "",               // Маршрут движения машины
+    val drivingRoute: String? = null,               // Маршрут движения машины
     @ColumnInfo(name = "available_days")
-    val availableDays: String = ""               // Дни доставки
+    val availableDays: String? = null               // Дни доставки
 )
