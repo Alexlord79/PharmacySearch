@@ -123,7 +123,7 @@ fun PharmaciesScreen(
                     modifier = Modifier.statusBarsPadding()
                 ) {
                     Title(
-                        modifier = Modifier.padding(horizontal = 24.dp),
+                        modifier = Modifier.padding(horizontal = 16.dp),
                         fontSize = 24.sp,
                         text = stringResource(R.string.app_name)
                     )
