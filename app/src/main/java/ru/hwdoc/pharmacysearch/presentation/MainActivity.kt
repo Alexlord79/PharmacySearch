@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dagger.hilt.android.AndroidEntryPoint
+import ru.hwdoc.pharmacysearch.presentation.screen.details.DetailsPharmacyScreen
 import ru.hwdoc.pharmacysearch.presentation.screen.pharmacies.PharmaciesScreen
 import ru.hwdoc.pharmacysearch.presentation.ui.theme.PharmacySearchTheme
 
@@ -17,9 +18,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PharmacySearchTheme {
-                PharmaciesScreen(
-                    onPharmacyClick = {}
-                )
+//                PharmaciesScreen(
+//                    onPharmacyClick = {}
+//                )
+                DetailsPharmacyScreen(onFinished = {})
             }
         }
     }
